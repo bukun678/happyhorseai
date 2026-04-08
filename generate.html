@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HappyHorse AI Generator – Create Videos from Text Prompts</title>
+<meta name="description" content="Use the HappyHorse AI Generator to create cinematic AI video outputs from text prompts. API-ready and built like a real product page." />
+<meta name="robots" content="index,follow" /><link rel="canonical" href="https://happyhorseai.to/generate.html" />
+<meta property="og:type" content="website" /><meta property="og:url" content="https://happyhorseai.to/generate.html" /><meta property="og:title" content="HappyHorse AI Generator" />
+<meta property="og:description" content="Create cinematic AI video outputs from text prompts with the HappyHorse generator." />
+<style>:root{
+  --bg:#090f1e;--bg2:#0e1630;--panel:rgba(255,255,255,.06);--panel2:rgba(255,255,255,.035);
+  --text:#f7f9fd;--muted:#bcc7da;--line:rgba(255,255,255,.10);--accent:#9bb7ff;--accent2:#d4e0ff;
+  --green:#99f0b7;--yellow:#ffd88a;--red:#ffaaa5;--shadow:0 18px 50px rgba(0,0,0,.28);--max:1120px;--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);
+background:radial-gradient(1200px 900px at 8% -10%, rgba(155,183,255,.18), transparent 50%),radial-gradient(950px 700px at 100% 0%, rgba(212,224,255,.10), transparent 48%),linear-gradient(180deg, var(--bg), var(--bg2));line-height:1.7}
+a{color:var(--accent2);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(9,15,30,.72);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:calc(var(--max) + 40px);margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-weight:800;color:var(--text);letter-spacing:.15px}.nav-links{display:flex;gap:16px;flex-wrap:wrap}.nav-links a{color:var(--muted);font-size:14px}
+.hero{padding:78px 0 30px}.eyebrow{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(155,183,255,.12);border:1px solid rgba(155,183,255,.22);color:var(--accent2);font-size:13px;font-weight:700}
+h1{font-size:clamp(40px,6vw,68px);line-height:1.02;letter-spacing:-.03em;margin:18px 0 14px}
+h2{font-size:clamp(30px,4vw,42px);line-height:1.08;letter-spacing:-.02em;margin:0 0 12px}h3{margin:0 0 8px}
+.sub{max-width:840px;color:var(--muted);font-size:clamp(18px,2.2vw,21px)}.section{padding:18px 0}
+.panel{margin-top:16px;background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch;margin-top:24px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:24px}
+.card{grid-column:span 4;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.card p,.lede,.muted,.small,.helper{color:var(--muted)}.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:14px;border:1px solid var(--line);font-weight:700;text-decoration:none;box-shadow:var(--shadow);cursor:pointer;font:inherit}
+.btn-primary{color:#0b1020;background:linear-gradient(180deg,#c1d3ff,#9bb7ff);border-color:transparent}.btn-secondary{background:rgba(255,255,255,.045);color:var(--text)}
+.kicker{color:var(--accent2);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}.cols{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+.bullets{padding-left:20px;margin:0}.bullets li{margin:8px 0}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse}
+th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--accent2);font-size:14px}td{color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.chip{display:inline-block;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--muted);font-size:13px}
+.input,.textarea,.select{width:100%;background:rgba(255,255,255,.045);border:1px solid var(--line);color:var(--text);border-radius:14px;padding:14px 16px;font:inherit}
+.textarea{min-height:132px;resize:vertical}label{display:block;margin:10px 0 8px;font-weight:700}.helper{font-size:13px;margin-top:6px}
+.preview-box{position:relative;min-height:340px;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:radial-gradient(600px 300px at 25% 15%, rgba(155,183,255,.20), transparent 40%),linear-gradient(135deg,#111a34,#0b1227 55%, #162447)}
+.preview-inner{position:absolute;inset:0;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.42))}
+.preview-tag{position:absolute;top:18px;left:18px;padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700;background:rgba(255,255,255,.10);border:1px solid var(--line)}
+.metric-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.metric{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-size:14px;color:var(--muted)}
+.result{margin-top:18px;padding:18px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.notice{margin-top:14px;padding:12px 14px;border-radius:14px;background:rgba(155,183,255,.08);border:1px solid rgba(155,183,255,.18);color:var(--muted)}
+.status-ok{color:var(--green)}.status-warn{color:var(--yellow)}.status-danger{color:var(--red)}
+.loading{display:none;align-items:center;gap:10px;margin-top:14px;color:var(--muted)}.spinner{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.20);border-top-color:var(--accent2);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.feature,.step,.price-card{padding:16px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.step-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;font-weight:800;background:rgba(155,183,255,.16);color:var(--accent2);margin-bottom:8px}
+.pricing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.price{font-size:34px;font-weight:800;letter-spacing:-.03em}.footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
+details{border-top:1px solid var(--line);padding:16px 0}summary{cursor:pointer;font-weight:700;list-style:none}summary::-webkit-details-marker{display:none}
+pre{white-space:pre-wrap;word-break:break-word;background:rgba(255,255,255,.03);padding:16px;border-radius:14px;border:1px solid var(--line);color:var(--text)}
+@media (max-width:980px){.hero-grid,.cols,.pricing,.steps,.feature-list{grid-template-columns:1fr}}
+@media (max-width:900px){.nav-links{display:none}.card{grid-column:span 12}}
+</style></head><body>
+<header class="nav"><div class="nav-inner"><a class="brand" href="https://happyhorseai.to/">HappyHorse AI</a><nav class="nav-links" aria-label="Primary"><a href="https://happyhorseai.to/">Home</a><a href="https://happyhorseai.to/what-is-happyhorse.html">What Is It</a><a href="https://happyhorseai.to/happyhorse-vs-seedance-2.html">Comparison</a></nav></div></header>
+<main class="wrap">
+<section class="hero"><span class="eyebrow">Generator · prompt to video · API-ready</span><h1>Generate with HappyHorse AI</h1>
+<p class="sub">Enter a prompt, choose your preferred style, and run the HappyHorse AI generation flow. The page works with a live backend through <code>/api/generate</code> and includes a polished loading state and result preview.</p></section>
+
+<section class="section"><div class="panel"><div class="kicker">Generator</div><h2 id="prompt-box">Create your video prompt</h2>
+<label for="prompt">Prompt</label>
+<textarea id="prompt" class="textarea" placeholder="Example: cinematic horse racing through a futuristic city, dramatic camera movement, glossy reflections, neon lights, sharp depth"></textarea>
+
+<div class="cols" style="margin-top:12px;">
+<div><label for="style">Style</label><select id="style" class="select"><option value="Cinematic">Cinematic</option><option value="Commercial">Commercial</option><option value="Anime">Anime</option><option value="Product Ad">Product Ad</option><option value="Social Clip">Social Clip</option></select><div class="helper">Choose the output framing you want the generator to lean toward.</div></div>
+<div><label for="aspect">Aspect ratio</label><select id="aspect" class="select"><option value="16:9">16:9</option><option value="9:16">9:16</option><option value="1:1">1:1</option></select><div class="helper">Use 9:16 for short-form platforms and 16:9 for landscape scenes.</div></div>
+</div>
+
+<div class="cols" style="margin-top:12px;">
+<div><label for="duration">Duration</label><select id="duration" class="select"><option value="4 seconds">4 seconds</option><option value="6 seconds">6 seconds</option><option value="8 seconds">8 seconds</option></select></div>
+<div><label for="systemPrompt">Optional system instruction</label><input id="systemPrompt" class="input" placeholder="Example: return a concise cinematic generation result." /></div>
+</div>
+
+<div class="cta-row"><button class="btn btn-primary" onclick="runGenerate()">Generate Video</button><button class="btn btn-secondary" onclick="fillExample()">Use Example Prompt</button></div>
+<div id="loading" class="loading"><div class="spinner"></div><div>Generating your HappyHorse AI result...</div></div>
+<div id="statusBox" class="notice" style="display:none;"></div>
+<div id="result" class="result" style="display:none;">
+<h3>Generation result</h3><pre id="resultText"></pre>
+<div class="metric-row"><div class="metric" id="metaStyle">Style: —</div><div class="metric" id="metaAspect">Aspect: —</div><div class="metric" id="metaDuration">Duration: —</div></div>
+<div class="cta-row"><button class="btn btn-secondary" onclick="runGenerate()">Generate again</button><a class="btn btn-secondary" href="https://happyhorseai.to/#pricing">View pricing</a></div>
+</div></div></section>
+
+<section class="section"><div class="panel"><div class="kicker">Why this page converts better</div><h2>A stronger product-style experience</h2>
+<ul class="bullets"><li>The prompt area sits at the center of the page instead of being buried under explanation-only content.</li><li>The loading state, result preview, and metadata chips make the flow feel closer to a real tool.</li><li>The page is already wired to a serverless backend route, so it can evolve from demo to live product without rebuilding the front end.</li></ul>
+<div class="cta-row"><a class="btn btn-secondary" href="https://happyhorseai.to/">Back to homepage</a><a class="btn btn-secondary" href="https://happyhorseai.to/happyhorse-vs-seedance-2.html">See comparison</a></div>
+</div></section>
+</main>
+<script>
+function fillExample(){
+ document.getElementById('prompt').value='cinematic horse racing through a futuristic city, dramatic camera movement, glossy reflections, neon lights, sharp depth';
+ document.getElementById('systemPrompt').value='Return a concise cinematic generation result.';
+ document.getElementById('style').value='Cinematic'; document.getElementById('aspect').value='16:9'; document.getElementById('duration').value='6 seconds';
+}
+function setStatus(message,type='warn'){
+ const box=document.getElementById('statusBox'); box.style.display='block'; box.className='notice';
+ const cls=type==='ok'?'status-ok':type==='danger'?'status-danger':'status-warn'; box.innerHTML='<strong class="'+cls+'">'+message+'</strong>';
+}
+function setLoading(isLoading){ document.getElementById('loading').style.display=isLoading?'flex':'none'; }
+async function runGenerate(){
+ const prompt=document.getElementById('prompt').value.trim(), style=document.getElementById('style').value, aspect=document.getElementById('aspect').value, duration=document.getElementById('duration').value, systemPrompt=document.getElementById('systemPrompt').value.trim();
+ const resultWrap=document.getElementById('result'), resultText=document.getElementById('resultText');
+ if(!prompt){ setStatus('Please enter a prompt first.','danger'); return; }
+ setLoading(true); setStatus('Sending request to /api/generate ...','warn'); resultWrap.style.display='none'; resultText.textContent='';
+ try {
+   const res=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt,style,aspect,duration,systemPrompt,mode:'text'})});
+   const data=await res.json(); if(!res.ok) throw new Error(data.error || 'Request failed');
+   resultWrap.style.display='block'; resultText.textContent=data.output || data.message || JSON.stringify(data,null,2);
+   document.getElementById('metaStyle').textContent='Style: '+style; document.getElementById('metaAspect').textContent='Aspect: '+aspect; document.getElementById('metaDuration').textContent='Duration: '+duration;
+   if(data.placeholder) setStatus('Backend endpoint not configured yet. Showing placeholder generation output.','warn'); else setStatus('Live backend response received.','ok');
+   resultWrap.scrollIntoView({behavior:'smooth', block:'start'});
+ } catch(err) { setStatus('Request failed: '+err.message,'danger'); } finally { setLoading(false); }
+}
+</script></body></html>
